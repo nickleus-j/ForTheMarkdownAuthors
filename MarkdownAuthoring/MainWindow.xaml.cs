@@ -21,16 +21,36 @@ namespace MarkdownAuthoring
         {
             InitializeComponent();
         }
-        private void PreviewButton_Click(object sender, RoutedEventArgs e)
+
+        // Event handler for Markdown TextBox text changes
+        private void MarkdownTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            string markdownContent = MarkdownTextBox.Text;
-            string htmlContent = ConvertMarkdownToHtml(markdownContent);
-            PreviewBrowser.NavigateToString(htmlContent);
+            UpdatePreview();
         }
 
-        private string ConvertMarkdownToHtml(string markdownContent)
+        //Update preview by converting Markdown to HTML
+        private void UpdatePreview()
         {
-            return Markdown.ToHtml(markdownContent);
+            string markdownText = MarkdownTextBox.Text;
+            string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
+
+            PreviewBrowser.NavigateToString($"<html><body>{htmlContent}</body></html>");
         }
+
+        //// Helper method to insert text at cursor position in TextBox
+        private void InsertTextAtCursor(string text)
+        {
+            var selectionStart = MarkdownTextBox.SelectionStart;
+            MarkdownTextBox.Text = MarkdownTextBox.Text.Insert(selectionStart, text);
+            MarkdownTextBox.SelectionStart = selectionStart + text.Length;
+            UpdatePreview();
+        }
+
+        //Toolbar button click events
+        private void Bold_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("**Bold Text**");
+        private void Italic_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("_Italic Text_");
+        private void Heading_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("# Heading");
+        private void Link_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("[Link Text](http://bing.com)");
+        private void List_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("- List item");
     }
 }
