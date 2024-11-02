@@ -23,8 +23,8 @@
         <!-- WebBrowser for live preview -->
         <WebBrowser Name="PreviewBrowser" HorizontalAlignment="Right" Margin="0,40,10,0" Width="400" Height="350"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <ComboBox x:Name="PageSizes"></ComboBox>
-            <Button Content="Save As"></Button>
+            <ComboBox x:Name="PageSizes" FontFamily="Global Sans Serif" FontSize="16"></ComboBox>
+            <Button Content="Save To PDF" Click="SaveAsPdfButton_Click" FontFamily="Segoe UI Black" FontSize="16" ></Button>
         </StackPanel>
     </Grid>
 </Window>

@@ -9,6 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Markdig;
+using MarkdownAuthoring.ComponentHelpers;
+using Microsoft.Win32;
 using PdfSharp;
 
 namespace MarkdownAuthoring
@@ -18,21 +20,16 @@ namespace MarkdownAuthoring
     /// </summary>
     public partial class MainWindow : Window
     {
+        PdfComponentHelper pdfComponentHelper;
         public MainWindow()
         {
             InitializeComponent();
-            PopulatePageSizes();
+            SetUpPdfHelpers();
         }
-        private void PopulatePageSizes()
+        private void SetUpPdfHelpers()
         {
-            foreach (PageSize pageSize in Enum.GetValues(typeof(PageSize)))
-            {
-                if (pageSize != PageSize.Undefined)
-                {
-                    PageSizes.Items.Add(pageSize);
-                }
-            }
-            PageSizes.SelectedIndex = 0; // Select the first item by default
+            pdfComponentHelper = new PdfComponentHelper();
+            pdfComponentHelper.PopulatePageSizes(PageSizes);
         }
 
         // Event handler for Markdown TextBox text changes
@@ -40,14 +37,33 @@ namespace MarkdownAuthoring
         {
             UpdatePreview();
         }
-
+        private void SaveAsPdfButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageSize selectedPageSize = (PageSize)PageSizes.SelectedItem;
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF files (*.pdf)|*.pdf",
+                DefaultExt = ".pdf",
+                Title = "Save PDF Document"
+            };
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                pdfComponentHelper.SaveAsPdf(MarkdownTextToHtml(), saveFileDialog.FileName);
+            }
+        }
+        public string MarkdownTextToHtml()
+        {
+            string markdownText = MarkdownTextBox.Text;
+            string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
+            return $"<html><body>{htmlContent}</body></html>";
+        }
         //Update preview by converting Markdown to HTML
         private void UpdatePreview()
         {
             string markdownText = MarkdownTextBox.Text;
             string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
             
-            PreviewBrowser.NavigateToString($"<html><body>{htmlContent}</body></html>");
+            PreviewBrowser.NavigateToString(MarkdownTextToHtml());
         }
 
         //// Helper method to insert text at cursor position in TextBox
