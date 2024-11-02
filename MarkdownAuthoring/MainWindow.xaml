@@ -6,6 +6,12 @@
     <Grid>
         <!-- Toolbar for formatting options -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF355A04"/>
+                    <GradientStop Color="#FFE1FFB7" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
             <Button Content="Bold" Click="Bold_Click" Margin="5"/>
             <Button Content="Italic" Click="Italic_Click" Margin="5"/>
             <Button Content="Heading" Click="Heading_Click" Margin="5"/>
@@ -21,10 +27,16 @@
                  TextChanged="MarkdownTextBox_TextChanged"/>
 
         <!-- WebBrowser for live preview -->
-        <WebBrowser Name="PreviewBrowser" HorizontalAlignment="Right" Margin="0,40,10,0" Width="400" Height="350"/>
+        <WebBrowser Name="PreviewBrowser" HorizontalAlignment="Right" Margin="0,40,10,0" Width="400" Height="350" OpacityMask="#FFF7F3F3"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <ComboBox x:Name="PageSizes" FontFamily="Global Sans Serif" FontSize="16"></ComboBox>
-            <Button Content="Save To PDF" Click="SaveAsPdfButton_Click" FontFamily="Segoe UI Black" FontSize="16" ></Button>
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF5B9192"/>
+                    <GradientStop Color="#FF5EF9FD" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <ComboBox x:Name="PageSizes" FontFamily="Global Sans Serif" FontSize="16" Margin="5 0"></ComboBox>
+            <Button Content="Save To PDF" Click="SaveAsPdfButton_Click" FontFamily="Segoe UI Black" FontSize="16" Margin="5 0"></Button>
         </StackPanel>
     </Grid>
 </Window>
