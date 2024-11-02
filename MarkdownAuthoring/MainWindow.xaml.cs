@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Markdig;
+using PdfSharp;
 
 namespace MarkdownAuthoring
 {
@@ -20,6 +21,18 @@ namespace MarkdownAuthoring
         public MainWindow()
         {
             InitializeComponent();
+            PopulatePageSizes();
+        }
+        private void PopulatePageSizes()
+        {
+            foreach (PageSize pageSize in Enum.GetValues(typeof(PageSize)))
+            {
+                if (pageSize != PageSize.Undefined)
+                {
+                    PageSizes.Items.Add(pageSize);
+                }
+            }
+            PageSizes.SelectedIndex = 0; // Select the first item by default
         }
 
         // Event handler for Markdown TextBox text changes
@@ -33,7 +46,7 @@ namespace MarkdownAuthoring
         {
             string markdownText = MarkdownTextBox.Text;
             string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
-
+            
             PreviewBrowser.NavigateToString($"<html><body>{htmlContent}</body></html>");
         }
 

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlRenderer.PdfSharp" Version="1.5.0.6" />
     <PackageReference Include="Markdig" Version="0.38.0" />
     <PackageReference Include="Markdig.Wpf" Version="0.5.0.1" />
   </ItemGroup>
