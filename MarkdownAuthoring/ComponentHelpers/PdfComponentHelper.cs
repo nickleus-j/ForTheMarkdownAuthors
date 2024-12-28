@@ -31,6 +31,7 @@ namespace MarkdownAuthoring.ComponentHelpers
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             PdfDocument pdf = PdfGenerator.GeneratePdf(htmlContent, GetPageSize());
             pdf.Save(fileName);
+            pdf.Close();
         }
         public PageSize GetPageSize()
         {
