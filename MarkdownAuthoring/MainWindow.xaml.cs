@@ -51,6 +51,26 @@ namespace MarkdownAuthoring
                 pdfComponentHelper.SaveAsPdf(MarkdownTextToHtml(), saveFileDialog.FileName);
             }
         }
+        private void OpenTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog{ DefaultExt = ".txt" };
+            if (openFile.ShowDialog() == true)
+            {
+                MarkdownTextBox.Text = FileParser.ReturnTextContent(openFile.FileName);
+            }
+        }
+        private void SaveTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog {
+                Filter = "Text files (*.txt)|*.txt",
+                DefaultExt = ".txt",
+                Title = "Save text file"
+            };
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                FileParser.WriteTextToFile(saveFileDialog.FileName, MarkdownTextBox.Text);
+            }
+        }
         public string MarkdownTextToHtml()
         {
             string markdownText = MarkdownTextBox.Text;
