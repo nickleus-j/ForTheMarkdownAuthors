@@ -5,35 +5,37 @@
         Title="Markdown Editor" Height="500" Width="800">
     
     <Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFd0e1dd"/>
+                    <GradientStop Color="#FFeedaed" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Content="Bold" Click="Bold_Click" Margin="5"/>
+            <Button Content="Italic" Click="Italic_Click" Margin="5"/>
+            <Button Content="Heading" Click="Heading_Click" Margin="5"/>
+            <Button Content="Link" Click="Link_Click" Margin="5"/>
+            <Button Content="List" Click="List_Click" Margin="5"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left">
             <!-- Toolbar for formatting options -->
-            <StackPanel Orientation="Horizontal">
-                <StackPanel.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFd0e1dd"/>
-                        <GradientStop Color="#FFeedaed" Offset="1"/>
-                    </LinearGradientBrush>
-                </StackPanel.Background>
-                <Button Content="Bold" Click="Bold_Click" Margin="5"/>
-                <Button Content="Italic" Click="Italic_Click" Margin="5"/>
-                <Button Content="Heading" Click="Heading_Click" Margin="5"/>
-                <Button Content="Link" Click="Link_Click" Margin="5"/>
-                <Button Content="List" Click="List_Click" Margin="5"/>
-            </StackPanel>
+            
 
             <TextBlock Text="Enter Markdown content below" Margin="5,40,0,0" FontSize="16"/>
             <!-- Markdown TextBox for editing -->
-            <TextBox Name="MarkdownTextBox" 
-         VerticalScrollBarVisibility="Auto"
-         HorizontalAlignment="Left" Margin="10,0,0,0"
-         Width="350" Height="350" AcceptsReturn="True" 
-         TextChanged="MarkdownTextBox_TextChanged"/>
+            <TextBox Name="MarkdownTextBox"  VerticalScrollBarVisibility="Auto"
+                     HorizontalAlignment="Left" Margin="10,0,0,0"
+                     Width="350" Height="350" AcceptsReturn="True" TextChanged="MarkdownTextBox_TextChanged"/>
 
         </StackPanel>
-        
-        
-        <!-- WebBrowser for live preview -->
-        <WebBrowser Name="PreviewBrowser" HorizontalAlignment="Right" Margin="0,40,10,0" Width="400" Height="350" OpacityMask="#FFF7F3F3"/>
+
+        <StackPanel HorizontalAlignment="Right">
+            <TextBlock Text="Result Seen content below" Margin="5,37,0,0" FontSize="14" Background="#FFE0ECD7" Padding="3" FontFamily="MS Gothic"/>
+            <!-- WebBrowser for live preview -->
+            <WebBrowser Name="PreviewBrowser" Width="400" Height="350" OpacityMask="#FFF7F3F3"/>
+            
+        </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
