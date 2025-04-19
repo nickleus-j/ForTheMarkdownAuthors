@@ -101,5 +101,6 @@ namespace MarkdownAuthoring
         private void Heading_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("# Heading");
         private void Link_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("[Link Text](http://bing.com)");
         private void List_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("- List item");
+        private void Blockquotes_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor(">>Blockquotes\n>> ");
     }
 }
