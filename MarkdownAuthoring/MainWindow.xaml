@@ -6,6 +6,7 @@
     
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <!-- Toolbar for formatting options -->
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFd0e1dd"/>
@@ -20,9 +21,6 @@
             <Button Content="Blockquote" Click="Blockquotes_Click" Margin="5"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left">
-            <!-- Toolbar for formatting options -->
-            
-
             <TextBlock Text="Enter Markdown content below" Margin="5,40,0,0" FontSize="16"/>
             <!-- Markdown TextBox for editing -->
             <TextBox Name="MarkdownTextBox"  VerticalScrollBarVisibility="Auto"

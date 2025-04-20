@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>typeWriting.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="typeWriting.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlRenderer.PdfSharp.NetStandard2" Version="1.5.1.3" />
