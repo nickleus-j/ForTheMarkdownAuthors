@@ -53,16 +53,24 @@ namespace MarkdownAuthoring
         }
         private void OpenTextButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog{ DefaultExt = ".txt" };
+            OpenFileDialog openFile = new OpenFileDialog{ Filter = "Text files (*.txt)|*.txt|Markdown files(*.md,*.mkd)|*.md;*.mkd", DefaultExt = ".txt" };
             if (openFile.ShowDialog() == true)
             {
-                MarkdownTextBox.Text = FileParser.ReturnTextContent(openFile.FileName);
+                string? fileContent = FileParser.ReturnTextContent(openFile.FileName);
+                if (String.IsNullOrEmpty(fileContent)) {
+                    FileStatusLbl.Text = "Error in Opening File";
+                }
+                else
+                {
+                    MarkdownTextBox.Text = fileContent;
+                    FileStatusLbl.Text = String.Empty;
+                }
             }
         }
         private void SaveTextButton_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog {
-                Filter = "Text files (*.txt)|*.txt",
+                Filter = "Text files (*.txt)|*.txt|Markdown files(*.md,*.mkd)|*.md;*.mkd",
                 DefaultExt = ".txt",
                 Title = "Save text file"
             };

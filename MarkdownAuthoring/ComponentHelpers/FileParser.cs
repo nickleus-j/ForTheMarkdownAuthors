@@ -8,21 +8,27 @@ namespace MarkdownAuthoring.ComponentHelpers
 {
     public class FileParser
     {
-        public static string ReturnTextContent(string fileName = "output.txt")
+        public static string? ReturnTextContent(string fileName = "output.txt")
         {
             StringBuilder sb = new StringBuilder();
-            using (System.IO.StreamReader file = new System.IO.StreamReader(fileName))
+            try
             {
-                sb.Append(file.ReadToEnd());
+                using (System.IO.StreamReader file = new System.IO.StreamReader(fileName))
+                {
+                    sb.Append(file.ReadToEnd());
+                }
             }
+            catch (System.IO.IOException e) { return null; }
+            
             return sb.ToString();
         }
-        public static void WriteTextToFile(string fileName, string text) {
+        public static string WriteTextToFile(string fileName, string text) {
             try
             {
                 System.IO.File.WriteAllText(fileName, text);
             }
             catch { }
+            return String.Empty;
         }
     }
 }
