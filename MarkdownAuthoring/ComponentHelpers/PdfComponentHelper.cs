@@ -22,12 +22,17 @@ namespace MarkdownAuthoring.ComponentHelpers
             PageSizes.SelectedItem = PageSize.Letter;
             PageSizeBox=PageSizes;
         }
-        public void SaveAsPdf(string htmlContent,string fileName= "output.pdf")
+        public string SaveAsPdf(string htmlContent,string fileName= "output.pdf")
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            PdfDocument pdf = PdfGenerator.GeneratePdf(htmlContent, GetPageSize());
-            pdf.Save(fileName);
-            pdf.Close();
+            try
+            {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                PdfDocument pdf = PdfGenerator.GeneratePdf(htmlContent, GetPageSize());
+                pdf.Save(fileName);
+                pdf.Close();
+            }
+            catch (Exception ex) { return String.Empty; }
+            return "*";
         }
         public PageSize GetPageSize()
         {

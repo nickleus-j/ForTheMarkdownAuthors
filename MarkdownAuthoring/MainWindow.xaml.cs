@@ -48,7 +48,8 @@ namespace MarkdownAuthoring
             };
             if (saveFileDialog.ShowDialog() == true)
             {
-                pdfComponentHelper.SaveAsPdf(MarkdownTextToHtml(), saveFileDialog.FileName);
+                string result=pdfComponentHelper.SaveAsPdf(MarkdownTextToHtml(), saveFileDialog.FileName);
+                PdfStatusLbl.Text = String.IsNullOrEmpty(result) ? "Error In generating Pdf" : String.Empty;
             }
         }
         private void OpenTextButton_Click(object sender, RoutedEventArgs e)
