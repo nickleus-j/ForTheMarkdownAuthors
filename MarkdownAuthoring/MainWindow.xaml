@@ -20,21 +20,30 @@
             <Button Content="List" Click="List_Click" Margin="5"/>
             <Button Content="Blockquote" Click="Blockquotes_Click" Margin="5"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left">
-            <TextBlock Text="Enter Markdown content below" Margin="5,40,0,0" FontSize="16"/>
-            <!-- Markdown TextBox for editing -->
-            <TextBox Name="MarkdownTextBox"  VerticalScrollBarVisibility="Auto"
-                     HorizontalAlignment="Left" Margin="10,0,0,0"
-                     Width="350" Height="350" AcceptsReturn="True" TextChanged="MarkdownTextBox_TextChanged"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Enter Markdown content below" FontSize="16"/>
+                <!-- Markdown TextBox for editing -->
+                <TextBox Name="MarkdownTextBox"  VerticalScrollBarVisibility="Auto"
+                    Margin="10,0,0,0"  MinWidth="350" MinHeight="350" AcceptsReturn="True" TextChanged="MarkdownTextBox_TextChanged"/>
 
-        </StackPanel>
+            </StackPanel>
 
-        <StackPanel HorizontalAlignment="Right">
-            <TextBlock Text="Result Seen content below" Margin="5,37,0,0" FontSize="14" Background="#FFE0ECD7" Padding="3" FontFamily="MS Gothic"/>
-            <!-- WebBrowser for live preview -->
-            <WebBrowser Name="PreviewBrowser" Width="400" Height="350" OpacityMask="#FFF7F3F3"/>
-            
-        </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <TextBlock Text="Result Seen content below" FontSize="14" Background="#FFE0ECD7" Padding="3" FontFamily="MS Gothic"/>
+                <!-- WebBrowser for live preview -->
+                <WebBrowser Name="PreviewBrowser" MinWidth="400" MinHeight="350" OpacityMask="#FFF7F3F3"/>
+
+            </StackPanel>
+        </Grid>
+        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#FF1A7539">
             
             <Button Content="Open markdown file" Click="OpenTextButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
