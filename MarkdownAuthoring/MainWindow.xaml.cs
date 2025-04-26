@@ -89,11 +89,15 @@ namespace MarkdownAuthoring
                 FileParser.WriteTextToFile(saveFileDialog.FileName, MarkdownTextBox.Text);
             }
         }
+        
         public string GetCssCode()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("body{font-family: '");
             sb.Append(fontBox.SelectedValue.ToString());
+            sb.Append("'}");
+            sb.Append("a{color: '");
+            sb.Append(Linkcolor.ColorName);
             sb.Append("'}");
             return sb.ToString();
         }
@@ -103,7 +107,9 @@ namespace MarkdownAuthoring
             string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
             return $"<html><head><style>{GetCssCode()}</style></head><body>{htmlContent}</body></html>";
         }
-        //Update preview by converting Markdown to HTML
+        /// <summary>
+        /// Update preview by converting Markdown to HTML
+        /// </summary>
         private void UpdatePreview()
         {
             string markdownText = MarkdownTextBox.Text;
@@ -112,7 +118,10 @@ namespace MarkdownAuthoring
             PreviewBrowser.NavigateToString(MarkdownTextToHtml());
         }
 
-        //// Helper method to insert text at cursor position in TextBox
+        /// <summary>
+        /// Helper method to insert text at cursor position in TextBox
+        /// </summary>
+        /// <param name="text"></param>
         private void InsertTextAtCursor(string text)
         {
             var selectionStart = MarkdownTextBox.SelectionStart;

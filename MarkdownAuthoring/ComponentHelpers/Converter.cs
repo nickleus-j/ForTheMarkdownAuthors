@@ -26,7 +26,9 @@ namespace MarkdownAuthoring.ComponentHelpers
         }
     }
 
-    // IsGreaterThanConverter //
+    /// <summary>
+    /// IsGreaterThanConverter //
+    /// </summary>
     public class IsGreaterThanConverter : IValueConverter
     {
         public static readonly IValueConverter Instance = new IsGreaterThanConverter();

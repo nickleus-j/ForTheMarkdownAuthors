@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="MarkdownAuthoring.ColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MarkdownAuthoring"
+             mc:Ignorable="d" 
+             x:Name="ColorCompo"
+             d:DesignHeight="150" d:DesignWidth="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Title, ElementName=ColorCompo}"  Grid.Column="0" VerticalAlignment="Center" />
+        <ComboBox x:Name="ColorComboBox" Grid.Column="1" SelectionChanged="ColorComboBox_SelectionChanged" VerticalAlignment="Center"></ComboBox>
+        <Border x:Name="ColorPreview"  Grid.Column="2"
+                Height="100"
+                BorderBrush="Black" 
+                BorderThickness="1"
+                Background="White" Margin="1,5,0,10" />
+    </Grid>
+</UserControl>
