@@ -25,15 +25,24 @@ namespace MarkdownAuthoring
         {
             InitializeComponent();
             SetUpPdfHelpers();
+            SetupStyleContent();
         }
         private void SetUpPdfHelpers()
         {
             pdfComponentHelper = new PdfComponentHelper();
             pdfComponentHelper.PopulatePageSizes(PageSizes);
         }
-
+        private void SetupStyleContent()
+        {
+            fontBox.ItemsSource = Fonts.SystemFontFamilies.OrderBy(x=>x.Source);
+            fontBox.SelectedValue = Fonts.SystemFontFamilies.SingleOrDefault(x => x.Source == "Verdana");
+        }
         // Event handler for Markdown TextBox text changes
         private void MarkdownTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            UpdatePreview();
+        }
+        private void fontBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdatePreview();
         }
@@ -80,11 +89,19 @@ namespace MarkdownAuthoring
                 FileParser.WriteTextToFile(saveFileDialog.FileName, MarkdownTextBox.Text);
             }
         }
+        public string GetCssCode()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("body{font-family: '");
+            sb.Append(fontBox.SelectedValue.ToString());
+            sb.Append("'}");
+            return sb.ToString();
+        }
         public string MarkdownTextToHtml()
         {
             string markdownText = MarkdownTextBox.Text;
             string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
-            return $"<html><body>{htmlContent}</body></html>";
+            return $"<html><head><style>{GetCssCode()}</style></head><body>{htmlContent}</body></html>";
         }
         //Update preview by converting Markdown to HTML
         private void UpdatePreview()
@@ -111,5 +128,7 @@ namespace MarkdownAuthoring
         private void Link_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("[Link Text](http://bing.com)");
         private void List_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("- List item");
         private void Blockquotes_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor(">>Blockquotes\n>> ");
+
+        
     }
 }

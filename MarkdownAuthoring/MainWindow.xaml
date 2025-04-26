@@ -36,13 +36,21 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <ScrollViewer Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="5,0,0,0">
-                <StackPanel>
-                    <TextBlock Text="Enter Markdown content below" FontSize="16"/>
-                    <!-- Markdown TextBox for editing -->
-                    <TextBox Name="MarkdownTextBox"   MinWidth="350" MinHeight="350" AcceptsReturn="True" TextChanged="MarkdownTextBox_TextChanged"/>
-                </StackPanel>
-            </ScrollViewer>
+            <TabControl  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="5,0,0,0" MinWidth="350" MinHeight="350">
+                <TabItem Header="Markdown content">
+                    <TextBox Name="MarkdownTextBox" AcceptsReturn="True" TextChanged="MarkdownTextBox_TextChanged" MinWidth="350" MinHeight="350"/>
+                </TabItem>
+                <TabItem Header="Style">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Font" Margin="0,0,10,0" FontSize="14"/>
+                            <ComboBox MinWidth="250" x:Name="fontBox" SelectionChanged="fontBox_SelectionChanged" FontSize="14"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </TabItem>
+            </TabControl>
 
             <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
                 <TextBlock Text="Result Seen content below" FontSize="14" Background="#FFE0ECD7" Padding="3" FontFamily="MS Gothic" DockPanel.Dock="Top"/>
@@ -52,14 +60,14 @@
             </DockPanel>
         </Grid>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="#52A4A5C3" Grid.Row="2">
+        <StackPanel Orientation="Horizontal" Background="#52A4A5C3" Grid.Row="2" HorizontalAlignment="Center">
             <TextBlock x:Name="FileStatusLbl" Margin="0,2,0,0" Foreground="#FFEC1D1D" FontFamily="Open Sans SemiBold"/>
             <Button Content="Open markdown file" Click="OpenTextButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
             <Button Content="Save markdown file" Click="SaveTextButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
             <TextBlock Text="Paper Size" FontSize="14" FontFamily="Open Sans" Foreground="#FF2F0B0B" Margin="0,2,0,0"/>
             <ComboBox x:Name="PageSizes" FontFamily="Global Sans Serif" FontSize="16"/>
             <Button Content="Save To PDF" Click="SaveAsPdfButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0" Background="#FFB96262"></Button>
-            <TextBlock x:Name="PdfStatusLbl" Margin="0,2,0,0" Foreground="#FFEC1D1D" FontFamily="Open Sans SemiBold"/>
+            <TextBlock x:Name="PdfStatusLbl" Margin="0,2,0,0" Foreground="#FFEC1D1D" FontFamily="Segoe UI Semibold"/>
         </StackPanel>
     </Grid>
 </Window>
