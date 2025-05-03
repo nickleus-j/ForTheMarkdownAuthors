@@ -19,7 +19,7 @@
         <TextBlock Text="{Binding Title, ElementName=ColorCompo}"  Grid.Column="0" VerticalAlignment="Center" />
         <ComboBox x:Name="ColorComboBox" Grid.Column="1" SelectionChanged="ColorComboBox_SelectionChanged" VerticalAlignment="Center"></ComboBox>
         <Border x:Name="ColorPreview"  Grid.Column="2"
-                Height="100"
+                Height="50"
                 BorderBrush="Black" 
                 BorderThickness="1"
                 Background="White" Margin="1,5,0,10" />

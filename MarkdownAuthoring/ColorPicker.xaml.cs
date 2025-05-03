@@ -52,5 +52,6 @@ namespace MarkdownAuthoring
             }
         }
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(ColorPicker), new PropertyMetadata(""));
+        public static readonly DependencyProperty ColorNameProperty = DependencyProperty.Register("ColorName", typeof(string), typeof(ColorPicker), new PropertyMetadata(""));
     }
 }
