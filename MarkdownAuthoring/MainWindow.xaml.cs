@@ -138,6 +138,9 @@ namespace MarkdownAuthoring
         private void List_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("- List item");
         private void Blockquotes_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor(">>Blockquotes\n>> ");
 
-        
+        private void Linkcolor_ChangeColor(object sender, EventArgs e)
+        {
+            UpdatePreview();
+        }
     }
 }

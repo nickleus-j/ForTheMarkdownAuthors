@@ -47,7 +47,7 @@
                             <TextBlock Text="Font" Margin="0,0,10,0" FontSize="14"/>
                             <ComboBox MinWidth="250" x:Name="fontBox" SelectionChanged="fontBox_SelectionChanged" FontSize="14"/>
                         </StackPanel>
-                        <local:ColorPicker x:Name="Linkcolor" Title="Link Color" />
+                        <local:ColorPicker x:Name="Linkcolor" Title="Link Color" ChangeColor="Linkcolor_ChangeColor"/>
                     </StackPanel>
 
                 </TabItem>

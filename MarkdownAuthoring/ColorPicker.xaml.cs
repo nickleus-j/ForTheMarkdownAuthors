@@ -23,6 +23,7 @@ namespace MarkdownAuthoring
         public string Title { get; set; }
         public Color ResultColor=> ColorComboBox!=null?(Color)ColorComboBox.SelectedItem:Colors.Blue;
         public string ColorName=> ColorComboBox.SelectedValue.ToString();
+        public event EventHandler ChangeColor;
         public ColorPicker()
         {
             InitializeComponent();
@@ -49,6 +50,10 @@ namespace MarkdownAuthoring
                 string selectedColorName = ColorComboBox.SelectedItem.ToString();
                 var color = (Color)ColorConverter.ConvertFromString(selectedColorName);
                 ColorPreview.Background = new SolidColorBrush(color);
+            }
+            if (ChangeColor != null)
+            {
+                ChangeColor(this, new EventArgs());
             }
         }
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(ColorPicker), new PropertyMetadata(""));
