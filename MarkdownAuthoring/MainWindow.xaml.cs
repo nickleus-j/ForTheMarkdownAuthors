@@ -99,6 +99,9 @@ namespace MarkdownAuthoring
             sb.Append("a{color: '");
             sb.Append(Linkcolor.ColorName);
             sb.Append("'}");
+            sb.Append("ul{list-style: '");
+            sb.Append(defaultBullet.ResultStyle);
+            sb.Append("'}");
             return sb.ToString();
         }
         public string MarkdownTextToHtml()
@@ -139,6 +142,11 @@ namespace MarkdownAuthoring
         private void Blockquotes_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor(">>Blockquotes\n>> ");
 
         private void Linkcolor_ChangeColor(object sender, EventArgs e)
+        {
+            UpdatePreview();
+        }
+
+        private void defaultBullet_ChangeStyle(object sender, EventArgs e)
         {
             UpdatePreview();
         }

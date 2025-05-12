@@ -48,6 +48,7 @@
                             <ComboBox MinWidth="250" x:Name="fontBox" SelectionChanged="fontBox_SelectionChanged" FontSize="14"/>
                         </StackPanel>
                         <local:ColorPicker x:Name="Linkcolor" Title="Link Color" ChangeColor="Linkcolor_ChangeColor"/>
+                        <local:ListStyle x:Name="defaultBullet" Title="Bullet Style" ChangeStyle="defaultBullet_ChangeStyle"/>
                     </StackPanel>
 
                 </TabItem>
