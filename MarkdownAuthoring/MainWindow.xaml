@@ -56,7 +56,7 @@
             </TabControl>
 
             <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-                <TextBlock Text="Result Seen content below" FontSize="14" Background="#FFE0ECD7" Padding="3" FontFamily="MS Gothic" DockPanel.Dock="Top"/>
+                <TextBlock Text="Result Seen content" FontSize="14" Background="#FFE0ECD7" Padding="3" FontFamily="MS Gothic" DockPanel.Dock="Top" x:Name="ResultLabel"/>
                 <!-- WebBrowser for live preview -->
                 <WebBrowser Name="PreviewBrowser" MinWidth="400" MinHeight="350" OpacityMask="#FFF7F3F3" DockPanel.Dock="Bottom"/>
 

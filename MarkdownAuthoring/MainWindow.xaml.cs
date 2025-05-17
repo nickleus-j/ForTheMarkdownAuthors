@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 using Markdig;
 using MarkdownAuthoring.ComponentHelpers;
 using Microsoft.Win32;
@@ -21,9 +23,11 @@ namespace MarkdownAuthoring
     public partial class MainWindow : Window
     {
         PdfComponentHelper pdfComponentHelper;
+        private string DefaultResultText = "Result Seen content below";
         public MainWindow()
         {
             InitializeComponent();
+            ResultLabel.Text = DefaultResultText;
             SetUpPdfHelpers();
             SetupStyleContent();
         }
@@ -119,6 +123,14 @@ namespace MarkdownAuthoring
             string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
             
             PreviewBrowser.NavigateToString(MarkdownTextToHtml());
+            if (IsValidHtmlContent(htmlContent))
+            {
+                ResultLabel.Text = DefaultResultText;
+            }
+            else
+            {
+                ResultLabel.Text = "Invalid markup Content";
+            }
         }
 
         /// <summary>
@@ -150,6 +162,21 @@ namespace MarkdownAuthoring
         private void defaultBullet_ChangeStyle(object sender, EventArgs e)
         {
             UpdatePreview();
+        }
+        public bool IsValidHtmlContent(string htmlOutput)
+        {
+            if (string.IsNullOrWhiteSpace(htmlOutput)) return false;
+
+            try
+            {
+
+                // If conversion succeeds, assume valid Markdown
+                return !string.IsNullOrWhiteSpace(htmlOutput);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
