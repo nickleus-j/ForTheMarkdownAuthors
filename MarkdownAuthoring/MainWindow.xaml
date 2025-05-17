@@ -26,6 +26,7 @@
             <Button Content="Italic" Click="Italic_Click" Margin="5"/>
             <Button Content="Heading" Click="Heading_Click" Margin="5"/>
             <Button Content="Link" Click="Link_Click" Margin="5"/>
+            <Button Content="Image" Click="Image_Click" Margin="5"/>
             <Button Content="List" Click="List_Click" Margin="5"/>
             <Button Content="Blockquote" Click="Blockquotes_Click" Margin="5"/>
         </StackPanel>

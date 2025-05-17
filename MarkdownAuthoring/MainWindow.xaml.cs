@@ -138,6 +138,7 @@ namespace MarkdownAuthoring
         private void Italic_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("_Italic Text_");
         private void Heading_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("# Heading");
         private void Link_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("[Link Text](http://bing.com)");
+        private void Image_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("\n![Alt Text](https://en.wikipedia.org/static/images/icons/wikipedia.png)");
         private void List_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("- List item");
         private void Blockquotes_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor(">>Blockquotes\n>> ");
 
