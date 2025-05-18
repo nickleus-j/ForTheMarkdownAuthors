@@ -24,10 +24,14 @@ namespace MarkdownAuthoring.ComponentHelpers
         }
         public string SaveAsPdf(string htmlContent,string fileName= "output.pdf")
         {
+            return SaveAsPdf(htmlContent, GetPageSize(),fileName);
+        }
+        public string SaveAsPdf(string htmlContent, PageSize selectedPageSize,string fileName = "output.pdf")
+        {
             try
             {
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                PdfDocument pdf = PdfGenerator.GeneratePdf(htmlContent, GetPageSize());
+                PdfDocument pdf = PdfGenerator.GeneratePdf(htmlContent, selectedPageSize);
                 pdf.Save(fileName);
                 pdf.Close();
             }
