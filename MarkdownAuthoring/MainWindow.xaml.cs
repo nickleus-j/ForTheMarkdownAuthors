@@ -67,7 +67,7 @@ namespace MarkdownAuthoring
         }
         private void OpenTextButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog{ Filter = "Text files (*.txt)|*.txt|Markdown files(*.md,*.mkd)|*.md;*.mkd", DefaultExt = ".txt" };
+            OpenFileDialog openFile = new OpenFileDialog{ Filter = "Text file (*.txt)|*.txt|Markdown file(*.md,*.mkd)|*.md;*.mkd", DefaultExt = ".txt" };
             if (openFile.ShowDialog() == true)
             {
                 string? fileContent = FileParser.ReturnTextContent(openFile.FileName);
@@ -148,7 +148,7 @@ namespace MarkdownAuthoring
         //Toolbar button click events
         private void Bold_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("**Bold Text**");
         private void Italic_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("_Italic Text_");
-        private void Heading_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("# Heading");
+        private void Heading_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("# Headline");
         private void Link_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("[Link Text](http://bing.com)");
         private void Image_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("\n![Alt Text](https://en.wikipedia.org/static/images/icons/wikipedia.png)");
         private void List_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("- List item");
