@@ -33,7 +33,7 @@ namespace MarkdownAuthoring
 
             if (!String.IsNullOrEmpty(App.FileLocation))
             {
-                LoadFile(App.FileLocation);
+                LoadToBrowser(App.FileLocation);
             }
         }
         private void SetUpPdfHelpers()
@@ -69,6 +69,13 @@ namespace MarkdownAuthoring
                 string result=pdfComponentHelper.SaveAsPdf(MarkdownTextToHtml(), selectedPageSize, saveFileDialog.FileName);
                 PdfStatusLbl.Text = String.IsNullOrEmpty(result) ? "Error In generating Pdf" : String.Empty;
             }
+        }
+        private async void LoadToBrowser(string fileName)
+        {
+            await Task.Delay(500);
+            string? fileContent = FileParser.ReturnTextContent(fileName);
+            LoadContent(fileContent);
+            
         }
         private void LoadFile(string fileName)
         {
@@ -156,7 +163,6 @@ namespace MarkdownAuthoring
             var selectionStart = MarkdownTextBox.SelectionStart;
             MarkdownTextBox.Text = MarkdownTextBox.Text.Insert(selectionStart, text);
             MarkdownTextBox.SelectionStart = selectionStart + text.Length;
-            UpdatePreview();
         }
 
         //Toolbar button click events
