@@ -30,6 +30,12 @@ namespace MarkdownAuthoring
             ResultLabel.Text = DefaultResultText;
             SetUpPdfHelpers();
             SetupStyleContent();
+
+            if (!String.IsNullOrEmpty(App.FileLocation))
+            {
+                LoadFile(App.FileLocation);
+                PreviewBrowser.
+            }
         }
         private void SetUpPdfHelpers()
         {
@@ -65,20 +71,29 @@ namespace MarkdownAuthoring
                 PdfStatusLbl.Text = String.IsNullOrEmpty(result) ? "Error In generating Pdf" : String.Empty;
             }
         }
+        private void LoadFile(string fileName)
+        {
+            string? fileContent = FileParser.ReturnTextContent(fileName);
+            LoadContent(fileContent);
+        }
+        private void LoadContent(string? fileContent)
+        {
+            if (String.IsNullOrEmpty(fileContent))
+            {
+                FileStatusLbl.Text = "Error in Opening File";
+            }
+            else
+            {
+                MarkdownTextBox.Text = fileContent;
+                FileStatusLbl.Text = String.Empty;
+            }
+        }
         private void OpenTextButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog{ Filter = "Text file (*.txt)|*.txt|Markdown file(*.md,*.mkd)|*.md;*.mkd", DefaultExt = ".txt" };
             if (openFile.ShowDialog() == true)
             {
-                string? fileContent = FileParser.ReturnTextContent(openFile.FileName);
-                if (String.IsNullOrEmpty(fileContent)) {
-                    FileStatusLbl.Text = "Error in Opening File";
-                }
-                else
-                {
-                    MarkdownTextBox.Text = fileContent;
-                    FileStatusLbl.Text = String.Empty;
-                }
+                LoadFile(openFile.FileName);
             }
         }
         private void SaveTextButton_Click(object sender, RoutedEventArgs e)
