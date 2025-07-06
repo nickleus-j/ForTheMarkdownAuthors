@@ -34,7 +34,6 @@ namespace MarkdownAuthoring
             if (!String.IsNullOrEmpty(App.FileLocation))
             {
                 LoadFile(App.FileLocation);
-                PreviewBrowser.
             }
         }
         private void SetUpPdfHelpers()
