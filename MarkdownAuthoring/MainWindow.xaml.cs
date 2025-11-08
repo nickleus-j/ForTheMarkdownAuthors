@@ -23,7 +23,7 @@ namespace MarkdownAuthoring
     public partial class MainWindow : Window
     {
         PdfComponentHelper pdfComponentHelper;
-        private string DefaultResultText = "Result Seen content below";
+        private string DefaultResultText = "Result Seen  below";
         public MainWindow()
         {
             InitializeComponent();
@@ -189,7 +189,6 @@ namespace MarkdownAuthoring
 
             try
             {
-
                 // If conversion succeeds, assume valid Markdown
                 return !string.IsNullOrWhiteSpace(htmlOutput);
             }

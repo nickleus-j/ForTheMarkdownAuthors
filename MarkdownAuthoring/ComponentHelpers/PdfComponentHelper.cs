@@ -1,7 +1,6 @@
 ﻿using PdfSharp;
 using PdfSharp.Pdf;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 
