@@ -30,7 +30,7 @@
             <Button Content="List" Click="List_Click" Margin="5"/>
             <Button Content="Blockquote" Click="Blockquotes_Click" Margin="5"/>
         </StackPanel>
-        <Grid VerticalAlignment="Center" Grid.Row="1">
+        <Grid VerticalAlignment="Center" Grid.Row="1" Background="#FFEBE5ED">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -51,7 +51,6 @@
                         <local:ColorPicker x:Name="Linkcolor" Title="Link Color" ChangeColor="Linkcolor_ChangeColor"/>
                         <local:ListStyle x:Name="defaultBullet" Title="Bullet Style" ChangeStyle="defaultBullet_ChangeStyle"/>
                     </StackPanel>
-
                 </TabItem>
             </TabControl>
 
@@ -63,7 +62,7 @@
             </DockPanel>
         </Grid>
 
-        <StackPanel Orientation="Horizontal" Background="#52A4A5C3" Grid.Row="2" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
             <TextBlock x:Name="FileStatusLbl" Margin="0,2,0,0" Foreground="#FFEC1D1D" FontFamily="Open Sans SemiBold"/>
             <Button Content="Open markdown file" Click="OpenTextButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
             <Button Content="Save markdown file" Click="SaveTextButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
