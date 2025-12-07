@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib" 
         xmlns:local="clr-namespace:MarkdownAuthoring"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
         Title="Markdown Editor" Height="500" Width="800" FontFamily="Corbel">
 
     <Grid>
@@ -10,9 +11,9 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Grid.Row="0">
             <!-- Toolbar for formatting options -->
@@ -62,14 +63,14 @@
             </DockPanel>
         </Grid>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
-            <TextBlock x:Name="FileStatusLbl" Margin="0,2,0,0" Foreground="#FFEC1D1D" FontFamily="Open Sans SemiBold"/>
+        <ui:SimpleStackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+            <TextBlock x:Name="FileStatusLbl" Margin="0,2,0,0"  FontFamily="Open Sans SemiBold"/>
             <Button Content="Open markdown file" Click="OpenTextButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
             <Button Content="Save markdown file" Click="SaveTextButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
             <TextBlock Text="Paper Size" FontSize="14" FontFamily="Open Sans" Foreground="#FF2F0B0B" Margin="0,2,0,0"/>
             <ComboBox x:Name="PageSizes" FontFamily="Global Sans Serif" FontSize="16"/>
-            <Button Content="Save To PDF" Click="SaveAsPdfButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0" Background="#FFB96262"></Button>
-            <TextBlock x:Name="PdfStatusLbl" Margin="0,2,0,0" Foreground="#FFEC1D1D" FontFamily="Segoe UI Semibold"/>
-        </StackPanel>
+            <Button Content="Save To PDF" Click="SaveAsPdfButton_Click" FontFamily="Open Sans" FontSize="14" Margin="5 0"></Button>
+            <TextBlock x:Name="PdfStatusLbl" Margin="0,2,0,0"  FontFamily="Segoe UI Semibold"/>
+        </ui:SimpleStackPanel>
     </Grid>
 </Window>
