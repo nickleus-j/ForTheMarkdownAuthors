@@ -127,6 +127,10 @@ namespace MarkdownAuthoring
             sb.Append("ul{list-style: '");
             sb.Append(defaultBullet.ResultStyle);
             sb.Append("'}");
+            if (UnderlineH.IsChecked == true)
+            {
+                sb.Append("h1,h2,h3,h4,h5,h6,{text-decoration: 'underline'}");
+            }
             return sb.ToString();
         }
         public string MarkdownTextToHtml()
@@ -196,6 +200,11 @@ namespace MarkdownAuthoring
             {
                 return false;
             }
+        }
+
+        private void UnderlineH_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdatePreview();
         }
     }
 }

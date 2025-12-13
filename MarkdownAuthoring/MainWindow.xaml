@@ -51,6 +51,10 @@
                         </StackPanel>
                         <local:ColorPicker x:Name="Linkcolor" Title="Link Color" ChangeColor="Linkcolor_ChangeColor"/>
                         <local:ListStyle x:Name="defaultBullet" Title="Bullet Style" ChangeStyle="defaultBullet_ChangeStyle"/>
+                        <WrapPanel>
+                            <TextBlock Text="Underline Headings?"/>
+                            <CheckBox x:Name="UnderlineH" Checked="UnderlineH_Checked" Unchecked="UnderlineH_Checked"/>
+                        </WrapPanel>
                     </StackPanel>
                 </TabItem>
             </TabControl>
