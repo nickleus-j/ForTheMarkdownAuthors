@@ -70,6 +70,20 @@ namespace MarkdownAuthoring
                 PdfStatusLbl.Text = String.IsNullOrEmpty(result) ? "Error In generating Pdf" : String.Empty;
             }
         }
+        private void SaveAsOdtButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "ODT files (*.odt)|*.odt",
+                DefaultExt = ".odt",
+                Title = "Save odt Document"
+            };
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string result = DocumentGenerator.GenerateOdtFromHtmlCss(MarkdownTextToHtml(), saveFileDialog.FileName);
+                PdfStatusLbl.Text = String.IsNullOrEmpty(result) ? "Error In generating ODT" : String.Empty;
+            }
+        }
         private async void LoadToBrowser(string fileName)
         {
             await Task.Delay(500);
