@@ -53,6 +53,7 @@ namespace MarkdownAuthoring
         }
         private void fontBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(fontBox.SelectedItem!=null)
             UpdatePreview();
         }
         private void SaveAsPdfButton_Click(object sender, RoutedEventArgs e)
@@ -141,6 +142,13 @@ namespace MarkdownAuthoring
             sb.Append("ul{list-style: '");
             sb.Append(defaultBullet.ResultStyle);
             sb.Append("'}");
+            if (quoteFontSize.SelectedItem != null)
+            {
+                sb.Append("blockquote{text-align: justify; font-size: '");
+                sb.Append(((ComboBoxItem)quoteFontSize.SelectedItem).Content);
+                sb.Append("'}");
+            }
+            
             if (UnderlineH.IsChecked == true)
             {
                 sb.Append("h1,h2,h3,h4,h5,h6,{text-decoration: 'underline'}");

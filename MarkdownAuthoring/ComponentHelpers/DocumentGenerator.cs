@@ -19,7 +19,7 @@ namespace MarkdownAuthoring.ComponentHelpers
             {// Create ODT file
                 Document doc = new Document();
                 DocumentBuilder builder = new DocumentBuilder(doc);
-
+                builder.PageSetup.PaperSize = PaperSize.A4;
 
                 // Insert the HTML string
                 builder.InsertHtml(fullHtml);

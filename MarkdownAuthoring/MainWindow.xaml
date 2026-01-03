@@ -52,8 +52,17 @@
                         <local:ColorPicker x:Name="Linkcolor" Title="Link Color" ChangeColor="Linkcolor_ChangeColor"/>
                         <local:ListStyle x:Name="defaultBullet" Title="Bullet Style" ChangeStyle="defaultBullet_ChangeStyle"/>
                         <WrapPanel>
-                            <TextBlock Text="Underline Headings?"/>
+                            <TextBlock Text="Underline Headings?" Margin="0,0,10,0"/>
                             <CheckBox x:Name="UnderlineH" Checked="UnderlineH_Checked" Unchecked="UnderlineH_Checked"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBlock Text="Blockquote Font size"/>
+                            <ComboBox x:Name="quoteFontSize" SelectedIndex="0" SelectionChanged="fontBox_SelectionChanged">
+                                <ComboBoxItem Content="100%"/>
+                                <ComboBoxItem Content="90%"/>
+                                <ComboBoxItem Content="110%"/>
+                                <ComboBoxItem Content="120%"/>
+                            </ComboBox>
                         </WrapPanel>
                     </StackPanel>
                 </TabItem>
