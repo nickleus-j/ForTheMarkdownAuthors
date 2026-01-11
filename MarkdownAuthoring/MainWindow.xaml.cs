@@ -81,7 +81,7 @@ namespace MarkdownAuthoring
             };
             if (saveFileDialog.ShowDialog() == true)
             {
-                string result = DocumentGenerator.GenerateOdtFromHtmlCss(MarkdownTextToHtml(), saveFileDialog.FileName);
+                string result = DocumentGenerator.GenerateOdtFromHtmlCss(MarkdownTextToHtml(), PageSizeMapper.MapPdfSharpToAspose((PageSize)PageSizes.SelectedItem),saveFileDialog.FileName);
                 PdfStatusLbl.Text = String.IsNullOrEmpty(result) ? "Error In generating ODT" : String.Empty;
             }
         }

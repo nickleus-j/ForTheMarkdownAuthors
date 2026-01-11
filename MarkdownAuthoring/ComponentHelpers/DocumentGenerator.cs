@@ -13,13 +13,13 @@ namespace MarkdownAuthoring.ComponentHelpers
         /// </summary>
         /// <param name="html">HTML content string</param>
         /// <param name="filePath">Target ODT file path</param>
-        public static string GenerateOdtFromHtmlCss(string fullHtml, string filePath = "output.odt")
+        public static string GenerateOdtFromHtmlCss(string fullHtml, PaperSize givenSize,string filePath = "output.odt")
         {
             try
             {// Create ODT file
                 Document doc = new Document();
                 DocumentBuilder builder = new DocumentBuilder(doc);
-                builder.PageSetup.PaperSize = PaperSize.A4;
+                builder.PageSetup.PaperSize = givenSize;
 
                 // Insert the HTML string
                 builder.InsertHtml(fullHtml);
