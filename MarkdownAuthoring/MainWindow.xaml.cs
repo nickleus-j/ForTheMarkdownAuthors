@@ -158,7 +158,8 @@ namespace MarkdownAuthoring
         public string MarkdownTextToHtml()
         {
             string markdownText = MarkdownTextBox.Text;
-            string htmlContent = Markdown.ToHtml(markdownText); // Convert markdown to HTML using Markdig
+            var pipeline = new MarkdownPipelineBuilder().UsePipeTables().Build();
+            string htmlContent = Markdown.ToHtml(markdownText, pipeline); // Convert markdown to HTML using Markdig
             return $"<html><head><style>{GetCssCode()}</style></head><body>{htmlContent}</body></html>";
         }
         /// <summary>
