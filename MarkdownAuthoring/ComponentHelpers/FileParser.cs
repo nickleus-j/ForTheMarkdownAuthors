@@ -8,7 +8,7 @@ namespace MarkdownAuthoring.ComponentHelpers
 {
     public class FileParser
     {
-        public static string? ReturnTextContent(string fileName = "output.txt")
+        public static string? ReturnTextContentOfFile(string fileName = "output.txt")
         {
             StringBuilder sb = new StringBuilder();
             try

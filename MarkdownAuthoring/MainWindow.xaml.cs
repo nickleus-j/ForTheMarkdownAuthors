@@ -88,13 +88,13 @@ namespace MarkdownAuthoring
         private async void LoadToBrowser(string fileName)
         {
             await Task.Delay(500);
-            string? fileContent = FileParser.ReturnTextContent(fileName);
+            string? fileContent = FileParser.ReturnTextContentOfFile(fileName);
             LoadContent(fileContent);
             
         }
         private void LoadFile(string fileName)
         {
-            string? fileContent = FileParser.ReturnTextContent(fileName);
+            string? fileContent = FileParser.ReturnTextContentOfFile(fileName);
             LoadContent(fileContent);
         }
         private void LoadContent(string? fileContent)

@@ -16,6 +16,10 @@ namespace MarkdownAuthoring.ComponentHelpers
                 case PdfSharp.PageSize.Letter: return PaperSize.Letter;
                 case PdfSharp.PageSize.Legal: return PaperSize.Legal;
                 case PdfSharp.PageSize.Tabloid: return PaperSize.Tabloid;
+                case PdfSharp.PageSize.Ledger: return PaperSize.Ledger;
+                case PdfSharp.PageSize.Size10x14: return PaperSize.Paper10x14;
+                case PdfSharp.PageSize.Statement: return PaperSize.Statement;
+                case PdfSharp.PageSize.B5: return PaperSize.B5;
                 case PdfSharp.PageSize.Executive: return PaperSize.Executive;
                 default: // Fallback if no direct mapping exists
                     return PaperSize.A4;
