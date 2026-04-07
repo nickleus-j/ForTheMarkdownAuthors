@@ -41,7 +41,23 @@
             </Grid.RowDefinitions>
             <TabControl  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="5,0,0,0" MinWidth="350" MinHeight="350" FontFamily="Segoe UI Variable Display">
                 <TabItem Header="Markdown content">
-                    <TextBox Name="MarkdownTextBox" AcceptsReturn="True" TextChanged="MarkdownTextBox_TextChanged" MinWidth="350" MinHeight="350"/>
+                    <ScrollViewer>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBox Background="WhiteSmoke" Grid.Row="0" Name="MarkdownTextBox" AcceptsReturn="True" TextChanged="MarkdownTextBox_TextChanged" MinWidth="350" MinHeight="350"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                <Label>Find</Label>
+                                <TextBox Name="FindText" Margin="0,5,0,0" />
+                                <Label>Replace</Label>
+                                <TextBox Name="ReplaceText" Margin="0,5,0,0" />
+                                <Button Content="Replace" Click="ReplaceButton_Click" Margin="0,5,0,0" Height="25" PreviewMouseLeftButtonDown="ReplaceButton_Click" />
+                                <Label Name="ReplaceStatus" Margin="10,5,0,0" FontSize="12" Foreground="Green"/>
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Style">
                     <StackPanel>

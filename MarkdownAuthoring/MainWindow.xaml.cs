@@ -191,7 +191,23 @@ namespace MarkdownAuthoring
             MarkdownTextBox.Text = MarkdownTextBox.Text.Insert(selectionStart, text);
             MarkdownTextBox.SelectionStart = selectionStart + text.Length;
         }
+        private void ReplaceButton_Click(object sender, RoutedEventArgs e)
+        {
+            string text = MarkdownTextBox.Text;
+            string find = FindText.Text;
+            string replace = ReplaceText.Text;
 
+            if (text.Contains(find))
+            {
+                // Replaces only the first occurrence
+                MarkdownTextBox.Text = text.Replace(find, replace);
+                ReplaceStatus.Content= "Match Found and Replaced";
+            }
+            else
+            {
+                ReplaceStatus.Content = "No Match Found";
+            }
+        }
         //Toolbar button click events
         private void Bold_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("**Bold Text**");
         private void Italic_Click(object sender, RoutedEventArgs e) => InsertTextAtCursor("_Italic Text_");
