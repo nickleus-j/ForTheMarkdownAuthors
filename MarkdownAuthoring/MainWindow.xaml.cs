@@ -153,6 +153,7 @@ namespace MarkdownAuthoring
             {
                 sb.Append("h1,h2,h3,h4,h5,h6,{text-decoration: 'underline'}");
             }
+            sb.Append("table,td,th{border: 1px solid black}");
             return sb.ToString();
         }
         public string MarkdownTextToHtml()
